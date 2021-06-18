@@ -1,3 +1,7 @@
+$primary-Color : #d2d9e4;
+$second-Color : rgba(255,255,255,0.5);
+$third-Color : rgba(0,0,0,0.1);
+$font-Color: #71767f;
 *{
   margin: 0;
   padding: 0;
@@ -8,7 +12,7 @@
 .wraper{
   width: 100vw;
   min-height: 100vh;
-  background-color: #d2d9e4;
+  background-color: $primary-Color;
 
   .main{
     width: 100%;
@@ -19,38 +23,72 @@
     flex-direction: column;
 
     .container{
-      width: 30rem;
-      height: 8rem;
-      background: #d1dae3;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: 4rem;
-      position: relative;
-      border: 0.4rem solid #cad3dc;
-      box-shadow: -0.8rem -0.8rem 1.5rem rgba(255,255,255,0.5),
-                  1rem 1rem 1rem rgba(0,0,0,0.1),
-                  inset -0.8rem -0.8rem 1.5rem rgba(255,255,255,0.5),
-                  inset 1rem 1rem 1rem rgba(0,0,0,0.1);
-      .container__second{
-        position: absolute;
-        width: 77%;
-        height: 50%;
-        left: 3.5rem;
-        bottom: 2.1rem;
-        .size{
-          font-size: 4rem;
-          font-weight: bold;
-          color: #71767f;
-          display: inline-block;
-        }
-      }
+    width: 35rem;
+    height: 30rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 4rem;
+    box-shadow: -0.8rem -0.8rem 1.5rem $second-Color,
+                1rem 1rem 1rem $third-Color;
 
+
+      .container-time{
+        width: 30rem;
+        height: 8rem;
+        background: #d1dae3;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 4rem;
+        position: relative;
+        border: 0.4rem solid transparent;
+        box-shadow: -0.8rem -0.8rem 1.5rem $second-Color,
+                    1rem 1rem 1rem $third-Color,
+                    inset -0.8rem -0.8rem 1.5rem $second-Color,
+                    inset 1rem 1rem 1rem $third-Color;
+        .container__second{
+          position: absolute;
+          width: 77%;
+          height: 50%;
+          left: 3.5rem;
+          bottom: 2.1rem;
+          .size{
+            font-size: 4rem;
+            font-weight: bold;
+            color: $font-Color;
+            display: inline-block;
+          }
+        }
+
+      }
     }
+
   }
 }
-.buttons{
-  width: 30rem;
-  height: 5rem;
-  font-size: 2rem;
+
+.container-buttons{
+  align-self: center;
+  .buttons{
+    width: 8rem;
+    height: 5rem;
+    font-size: 2rem;
+    color: $font-Color;
+    border-radius: 100%;
+    border: none;
+    background: $primary-Color;
+    box-shadow: -0.8rem -0.8rem 1.5rem $second-Color,
+    1rem 1rem 1rem $third-Color,
+
+  }
+  .buttons:active{
+    border: 0.4rem solid transparent;
+    box-shadow:
+    inset -0.8rem -0.8rem 1.5rem $second-Color,
+    inset 1rem 1rem 1rem $third-Color;
+  }
+  .buttons:focus{
+    outline: none;
+  }
 }
