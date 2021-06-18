@@ -7,12 +7,15 @@ let playButton = document.getElementById('play')
 let stopButton = document.getElementById('stop')
 let newTime = document.getElementById('newTime')
 let clean = document.getElementById('Clean')
+let iconPlay = document.getElementById('iconPlay')
 playButton.addEventListener('click', play)
 buttonBreackPoint.addEventListener('click', breakPonint)
 stopButton.addEventListener('click', reset)
 clean.addEventListener('click', cleaner)
 
-let milSeg = 0, seg = 0, min = 0, hours = 0, intervalMilSeg, intervalSeg, intervalMinutes, intervalHours, playing = false, number = 0
+let milSeg = 0, seg = 0, min = 0, hours = 0, intervalMilSeg, intervalSeg, intervalMinutes, intervalHours, playing = false, number = 0;
+
+let pause = "./images/pausa.svg"
 
 horas.innerText = hours  + "0:"
 minutos.innerText = min  + "0:"
@@ -74,6 +77,7 @@ function play(){
     milSegPlay()
     playing = true
     playButton.value = 'Pause'
+    iconPlay.src = "./images/pausa.svg"
   }else{
     clearInterval(intervalSeg)
     clearInterval(intervalMilSeg)
@@ -81,6 +85,7 @@ function play(){
     clearInterval(intervalHours)
     playing = false
     playButton.value = 'Play'
+    iconPlay.src = "./images/play.svg"
   }
 }
 
@@ -105,7 +110,7 @@ function cleaner(){
 
 
 function breakPonint(){
-  number ++ 
+  number ++
   if(milSeg == 0 && seg == 0 && min == 0 && hours == 0){
     newTime.innerText = newTime.innerText + `(${number}) ${hours}0:${min}0:${seg}0:${milSeg} \n`
   }else {
