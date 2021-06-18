@@ -20,7 +20,7 @@
   flex-direction: column;
 }
 .wraper .main .container {
-  width: 35rem;
+  width: 32rem;
   height: 30rem;
   display: flex;
   flex-direction: column;
@@ -30,8 +30,8 @@
   box-shadow: -0.8rem -0.8rem 1.5rem rgba(255, 255, 255, 0.5), 1rem 1rem 1rem rgba(0, 0, 0, 0.1);
 }
 .wraper .main .container .container-time {
-  width: 30rem;
-  height: 8rem;
+  width: 27rem;
+  height: 7rem;
   background: #d1dae3;
   display: flex;
   justify-content: center;
@@ -45,8 +45,9 @@
   position: absolute;
   width: 77%;
   height: 50%;
-  left: 3.5rem;
+  left: 2.1rem;
   bottom: 2.1rem;
+  white-space: nowrap;
 }
 .wraper .main .container .container-time .container__second .size {
   font-size: 4rem;
@@ -54,13 +55,18 @@
   color: #71767f;
   display: inline-block;
 }
-
-.container-buttons {
-  align-self: center;
+.wraper .main .container .container-buttons {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
-.container-buttons .buttons {
-  width: 8rem;
-  height: 5rem;
+.wraper .main .container .container-buttons .buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 6rem;
+  height: 4rem;
   font-size: 2rem;
   color: #71767f;
   border-radius: 100%;
@@ -68,12 +74,21 @@
   background: #d2d9e4;
   box-shadow: -0.8rem -0.8rem 1.5rem rgba(255, 255, 255, 0.5), 1rem 1rem 1rem rgba(0, 0, 0, 0.1);
 }
-.container-buttons .buttons:active {
+.wraper .main .container .container-buttons .buttons .icon {
+  width: 1.5rem;
+}
+.wraper .main .container .container-buttons .buttons:active {
   border: 0.4rem solid transparent;
   box-shadow: inset -0.8rem -0.8rem 1.5rem rgba(255, 255, 255, 0.5), inset 1rem 1rem 1rem rgba(0, 0, 0, 0.1);
 }
-.container-buttons .buttons:focus {
+.wraper .main .container .container-buttons .buttons:focus {
   outline: none;
+}
+.wraper .main .container .newTime {
+  box-shadow: inset -0.8rem -0.8rem 1.5rem rgba(255, 255, 255, 0.5), inset 1rem 1rem 1rem rgba(0, 0, 0, 0.1);
+  width: 70%;
+  height: 10rem;
+  border-radius: 0.8rem;
 }
 
 /*# sourceMappingURL=style.css.map */

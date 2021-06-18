@@ -6,9 +6,11 @@ let buttonBreackPoint = document.getElementById('buttonBreackPoint')
 let playButton = document.getElementById('play')
 let stopButton = document.getElementById('stop')
 let newTime = document.getElementById('newTime')
+let clean = document.getElementById('Clean')
 playButton.addEventListener('click', play)
 buttonBreackPoint.addEventListener('click', breakPonint)
 stopButton.addEventListener('click', reset)
+clean.addEventListener('click', cleaner)
 
 let milSeg = 0, seg = 0, min = 0, hours = 0, intervalMilSeg, intervalSeg, intervalMinutes, intervalHours, playing = false, number = 0
 
@@ -96,12 +98,17 @@ function reset(){
   playButton.value = 'Play'
 }
 
+function cleaner(){
+  number = ""
+  newTime.innerText = ""
+}
+
 
 function breakPonint(){
-  number += 1
+  number ++ 
   if(milSeg == 0 && seg == 0 && min == 0 && hours == 0){
-    newTime.innerText = newTime.innerText + `(${number}) ${seg}0:${min}0:${seg}0:${milSeg} \n`
+    newTime.innerText = newTime.innerText + `(${number}) ${hours}0:${min}0:${seg}0:${milSeg} \n`
   }else {
-    newTime.innerText = newTime.innerText + `(${number}) ${seg}:${min}:${seg}:${milSeg} \n`
+    newTime.innerText = newTime.innerText + `(${number}) ${hours}:${min}:${seg}:${milSeg} \n`
   }
 }

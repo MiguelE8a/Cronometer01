@@ -2,6 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CRONOMETER</title>
     <link rel="stylesheet" href="style.css">
   </head>
@@ -18,11 +19,20 @@
             </div>
           </div>
           <div class="container-buttons">
-            <input type="button" class="buttons" id="play" value="Play">
-            <input type="button" class="buttons" id="stop" value="stop">
-            <input type="button" class="buttons" id="buttonBreackPoint" value="buttonBreackPoint">
+            <button type="button" class="buttons" id="play">
+              <img src="./images/play.svg" alt="play" class="icon">
+            </button>
+            <button type="button" class="buttons" id="stop" >
+              <img src="./images/back.svg" alt="stop" class="icon">
+            </button>
+            <button type="button" class="buttons" id="buttonBreackPoint" >
+              <img src="./images/cronografo.svg" alt="buttonBreackPoint" class="icon">
+            </button>
+            <button type="button" class="buttons" id="Clean" >
+              <img src="./images/cronografo.svg" alt="Clean" class="icon">
+            </button>
           </div>
-          <div id="newTime" ></div>
+          <div id="newTime" class="newTime"></div>
         </div>
 
       </div>
