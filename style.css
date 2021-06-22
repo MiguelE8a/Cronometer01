@@ -90,6 +90,7 @@
 }
 .wraper .main .container .container-buttons .buttons:active {
   border: 0.4rem solid transparent;
+  outline: none;
   box-shadow: inset -0.8rem -0.8rem 1.5rem rgba(255, 255, 255, 0.5), inset 1rem 1rem 1rem rgba(0, 0, 0, 0.1);
 }
 .wraper .main .container .container-buttons .buttons:focus {
