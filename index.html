@@ -10,6 +10,21 @@
     <div class="wraper">
       <div class="main">
         <div class="container">
+          <div type="button" class="button-Off-ON" value="OFF">
+            <label class="switch">
+              <input type="checkbox" >
+              <span class="slider"></span>
+            </label>
+            <!-- <label class="switch">
+              <input type="checkbox"  checked>
+              <span class="slider"></span>
+            </label> -->
+
+          </div>
+          <div class="container-CurrentDate" id='container-CurrentDate'>
+            <div class="currentDate size" id='currentDate'></div>
+            <div class="size" id="AM-PM"></div>
+          </div>
           <div class="container-time">
             <div class="container__second">
               <div class ="size" id="horas"></div>
@@ -25,14 +40,21 @@
             <button type="button" class="buttons" id="stop" >
               <img src="./images/back.svg" alt="stop" class="icon">
             </button>
-            <button type="button" class="buttons" id="buttonBreackPoint" >
+            <button type="button" class="buttons break" id="buttonBreackPoint" >
               <img src="./images/cronografo.svg" alt="buttonBreackPoint" class="icon">
             </button>
             <button type="button" class="buttons" id="Clean" >
               <img src="./images/lap.svg" alt="Clean" class="icon">
             </button>
           </div>
-          <div id="newTime" class="newTime"></div>
+            <div class="main-newTime">
+              <div class="container-newTime" id="container-newTime">
+                <div id=content_newTimeNum class="content_newTimeNum"></div>
+                <div id="newTime" class="newTime"></div>
+                <div class="contain-TimeBreak" id="contain-TimeBreak"></div>
+              </div>
+            </div>
+          </div>
         </div>
 
       </div>
