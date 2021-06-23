@@ -1,4 +1,7 @@
 let currentDate = document.getElementById('currentDate'),
+checkbox = document.getElementById('checkbox'),
+switchOn = document.getElementById('switchOn'),
+switchOff = document.getElementById('switchOff'),
 horas = document.getElementById('horas'),
 minutos = document.getElementById('minutos'),
 segundos = document.getElementById('segundos'),
@@ -18,40 +21,74 @@ playButton.addEventListener('click', play)
 buttonBreackPoint.addEventListener('click', breakPonint)
 stopButton.addEventListener('click', reset)
 clean.addEventListener('click', cleaner)
+checkbox.addEventListener('click', onOff)
 
 // -----------------------VARIABLES------------------------
-let milSeg = 0, seg = 0, min = 0, hours = 0, intervalMilSeg, intervalSeg, intervalMinutes, intervalHours, playing = false, number = 0;
+let milSeg = 0, seg = 0, min = 0, hours = 0, intervalMilSeg, intervalSeg, intervalMinutes,
+intervalHours, playing = false, number = 0, intervalDate, x = true;
 let pause = "./images/pausa.svg";
 
 // -----------------------FUNCIONES------------------------
-let intervalDate = setInterval(function(){
-  let timeClass = new Date()
-  let currentHours = timeClass.getHours(),
-  currentMinutes = timeClass.getMinutes(),
-  currentSeconds = timeClass.getSeconds();
-  am_pm.textContent = 'AM'
 
-  if(currentHours >= 12){
-    currentHours -=12
-    am_pm.textContent = 'PM'
+switchOn.textContent = 'on'
+switchOff.textContent = 'off'
+function intervalDateFunc(){
+    intervalDate = setInterval(function(){
+    let timeClass = new Date()
+    let currentHours = timeClass.getHours(),
+    currentMinutes = timeClass.getMinutes(),
+    currentSeconds = timeClass.getSeconds();
+    am_pm.textContent = 'AM'
+
+    if(currentHours >= 12){
+      currentHours -=12
+      am_pm.textContent = 'PM'
+    }
+    if(am_pm.textContent == 0){
+      currentHours +=12
+    }
+    if(currentHours < 10){
+      currentHours = `0${currentHours}`}
+    if(currentSeconds < 10){
+      currentSeconds = `0${currentSeconds}`}
+    if(currentMinutes < 10 ){
+      currentMinutes = `0${currentMinutes}`}
+
+     currentDate.textContent = `${currentHours}:${currentMinutes}:${currentSeconds}`
+   },1000);
+}
+
+function onOff(){
+  if(x){
+    intervalDateFunc()
+    horas.textContent ="00:"
+    minutos.textContent ="00:"
+    segundos.textContent ="00:"
+    miliSegundos.textContent ="00"
+     x = false
+
+  }else{
+    clearInterval(intervalDate)
+    currentDate.textContent = ""
+     am_pm.textContent = ''
+     horas.textContent =""
+     minutos.textContent =""
+     segundos.textContent =""
+     miliSegundos.textContent =""
+     number = ""
+     newTime.textContent = ""
+     content_newTimeNum.innerHTML = ""
+     containTimeBreak.innerHTML = ""
+     x = true
   }
-  if(am_pm.textContent == 0){
-    currentHours +=12
-  }
-  if(currentHours < 10){
-    currentHours = `0${currentHours}`}
-  if(currentSeconds < 10){
-    currentSeconds = `0${currentSeconds}`}
-  if(currentMinutes < 10 ){
-    currentMinutes = `0${currentMinutes}`}
 
-   currentDate.textContent = `${currentHours}:${currentMinutes}:${currentSeconds}`
- },1000);
+}
 
-horas.innerText = hours  + "0:"
-minutos.innerText = min  + "0:"
-segundos.innerText = seg + "0:"
-miliSegundos.innerText = milSeg + "0"
+
+// horas.textContent = hours  + "0:"
+// minutos.textContent = min  + "0:"
+// segundos.textContent = seg + "0:"
+// miliSegundos.textContent = milSeg + "0"
 
 function milSegPlay(){
   intervalMilSeg = setInterval(() => {
@@ -62,7 +99,7 @@ function milSegPlay(){
     if(milSeg < 10){
       milSeg = `0${milSeg}`
     }
-    miliSegundos.innerText = milSeg
+    miliSegundos.textContent = milSeg
   }, 10);
 }
 function segPlay(){
@@ -74,7 +111,7 @@ function segPlay(){
     if(seg<10){
       seg = `0${seg}`
     }
-    segundos.innerText = `${seg}:`
+    segundos.textContent = `${seg}:`
   },1000)
 }
 function minutesPlay(){
@@ -86,7 +123,7 @@ function minutesPlay(){
     if(min<10){
       min = `0${min}`
     }
-    minutos.innerText = `${min}:`
+    minutos.textContent = `${min}:`
   },60000)
 }
 
@@ -96,54 +133,61 @@ function hoursPlay(){
     if(hours<10){
       hours = `0${hours}`
     }
-    horas.innerText = `${hours}:`
+    horas.textContent = `${hours}:`
   },3600000)
 }
 
 function play(){
-  if(!playing){
-    segPlay()
-    minutesPlay()
-    hoursPlay()
-    milSegPlay()
-    playing = true
-    playButton.value = 'Pause'
-    iconPlay.src = "./images/pausa.svg"
-  }else{
+  if(!x){
+    if(!playing){
+      segPlay()
+      minutesPlay()
+      hoursPlay()
+      milSegPlay()
+      playing = true
+      playButton.value = 'Pause'
+      iconPlay.src = "./images/pausa.svg"
+    }else{
+      clearInterval(intervalSeg)
+      clearInterval(intervalMilSeg)
+      clearInterval(intervalMinutes)
+      clearInterval(intervalHours)
+      playing = false
+      playButton.value = 'Play'
+      iconPlay.src = "./images/play.svg"
+    }
+  }
+}
+
+function reset(){
+  if(!x){
     clearInterval(intervalSeg)
     clearInterval(intervalMilSeg)
     clearInterval(intervalMinutes)
     clearInterval(intervalHours)
+    milSeg = 0, seg = 0, min = 0, hours = 0
+    horas.textContent ="00:"
+    minutos.textContent ="00:"
+    segundos.textContent ="00:"
+    miliSegundos.textContent ="00"
     playing = false
     playButton.value = 'Play'
     iconPlay.src = "./images/play.svg"
   }
 }
 
-function reset(){
-  clearInterval(intervalSeg)
-  clearInterval(intervalMilSeg)
-  clearInterval(intervalMinutes)
-  clearInterval(intervalHours)
-  milSeg = 0, seg = 0, min = 0, hours = 0
-  horas.innerText ="00:"
-  minutos.innerText ="00:"
-  segundos.innerText ="00:"
-  miliSegundos.innerText ="00"
-  playing = false
-  playButton.value = 'Play'
-  iconPlay.src = "./images/play.svg"
-}
-
 function cleaner(){
-  number = ""
-  newTime.textContent = ""
-  content_newTimeNum.innerHTML = ""
-  containTimeBreak.innerHTML = ""
+  if(!x){
+    number = ""
+    newTime.textContent = ""
+    content_newTimeNum.innerHTML = ""
+    containTimeBreak.innerHTML = ""
+  }
 }
 
 let fragment = document.createDocumentFragment()
 function breakPonint(){
+  if(!x){
   number ++
   let element = document.createElement('div')
   element.textContent = number
@@ -206,5 +250,5 @@ function breakPonint(){
 
 
 
-  console.log(fragment)
+  }console.log(fragment)
 }

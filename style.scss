@@ -2,6 +2,19 @@ $primary-Color : #d2d9e4;
 $second-Color : rgba(255,255,255,0.5);
 $third-Color : rgba(0,0,0,0.1);
 $font-Color: #71767f;
+$shadow-Outset: -0.8rem -0.8rem 1.5rem $second-Color, 1rem 1rem 1rem $third-Color;
+$shadow-Inset: inset -0.8rem -0.8rem 1.5rem $second-Color, inset 1rem 1rem 1rem $third-Color;
+$rem15: 1.5rem;
+@mixin flexCenter{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@mixin flexSpace-Around{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
 *{
   margin: 0;
   padding: 0;
@@ -17,48 +30,35 @@ $font-Color: #71767f;
   .main{
     width: 100%;
     min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flexCenter();
     flex-direction: column;
 
     .container{
     width: 32rem;
     height: 53rem;
-    display: flex;
+    @include flexSpace-Around();
     flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
     padding: 2rem 0;
     border-radius: 4rem;
-    box-shadow: -0.8rem -0.8rem 1.5rem $second-Color,
-                1rem 1rem 1rem $third-Color;
+    box-shadow: $shadow-Outset;
 
     .container-CurrentDate{
-      display: flex;
-      justify-content: space-around;
+      @include flexSpace-Around();
       width: 27rem;
       height: 7rem;
-      align-items: center;
       border-radius: 4rem;
       padding: 0 0.4rem;
       border: 0.4rem solid transparent;
-      box-shadow: -0.8rem -0.8rem 1.5rem $second-Color,
-                  1rem 1rem 1rem $third-Color,
-                  inset -0.8rem -0.8rem 1.5rem $second-Color,
-                  inset 1rem 1rem 1rem $third-Color;
+      box-shadow: $shadow-Outset, $shadow-Inset;
     }
       .container-time{
         width: 27rem;
         height: 7rem;
         background: #d1dae3;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        @include flexCenter();
         border-radius: 4rem;
         position: relative;
-        box-shadow: inset -0.8rem -0.8rem 1.5rem $second-Color,
-                    inset 1rem 1rem 1rem $third-Color;
+        box-shadow: $shadow-Inset;
 
         .container__second{
           position: absolute;
@@ -77,44 +77,36 @@ $font-Color: #71767f;
       }
       .container-buttons{
         width: 80%;
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
+        @include flexSpace-Around();
         .buttons{
-          display: flex;
-          align-items: center;
-          justify-content: center;
+          @include flexCenter();
           width: 6rem;
           height: 4rem;
-          font-size: 2rem;
           color: $font-Color;
           border-radius: 100%;
           border: none;
           background: $primary-Color;
-          box-shadow: -0.8rem -0.8rem 1.5rem $second-Color,
-          1rem 1rem 1rem $third-Color;
+          box-shadow:$shadow-Outset;
           outline: none;
 
           .icon{
-            width: 1.5rem;
+            width: $rem15;
           }
         }
         .buttons:active{
           border: 0.4rem solid transparent;
-          box-shadow:inset -0.8rem -0.8rem 1.5rem $second-Color,
-                              inset 1rem 1rem 1rem $third-Color;
+          box-shadow:$shadow-Inset;
         }
         .buttons:focus{
           outline: none;
         }
       }
       .main-newTime{
-        box-shadow:inset -0.8rem -0.8rem 1.5rem $second-Color,
-                  inset 1rem 1rem 1rem $third-Color;
+        box-shadow:$shadow-Inset;
         width: 70%;
         height: 16rem;
         border-radius: 0.8rem;
-        font-size: 1.5rem;
+        font-size: $rem15;
         color: $font-Color;
         overflow-x: hidden;
         overflow-y:inherit;
@@ -128,10 +120,8 @@ $font-Color: #71767f;
           .newTimeNum{
             margin: 0.2rem 0;
             padding: 0.1rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.5rem;
+            @include flexCenter();
+            font-size: $rem15;
             color: $font-Color;
             width: 2.1rem;
             height: 1.5rem;
@@ -141,16 +131,14 @@ $font-Color: #71767f;
           .newTimeNum2{
             margin: 0.2rem 0;
             padding: 0.2rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.5rem;
+            @include flexCenter();
+            font-size: $rem15;
             color: $font-Color;
             height: 1.5rem;
           }
           .newTime{
             height: 100%;
-            font-size: 1.5rem;
+            font-size: $rem15;
             margin: 0.1rem 0;
             padding-left: 0.5rem;
           }
@@ -159,8 +147,7 @@ $font-Color: #71767f;
       .main-newTime::-webkit-scrollbar{
         width: 10px;
         background: $primary-Color;
-        box-shadow: inset -0.8rem -0.8rem 1.5rem $second-Color,
-        inset 1rem 1rem 1rem $third-Color;
+        box-shadow: $shadow-Inset;
       }
       .main-newTime::-webkit-scrollbar-thumb {
         border-radius: 1rem;
@@ -172,27 +159,35 @@ $font-Color: #71767f;
   }
 }
 .button-Off-ON{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 6rem;
+  @include flexCenter();
+  width: 7rem;
   height: 4rem;
-  font-size: 2rem;
   color: $font-Color;
-  border-radius: 100%;
+  border-radius: 5rem;
   border: none;
   background: $primary-Color;
-  box-shadow: -0.8rem -0.8rem 1.5rem $second-Color,
-  1rem 1rem 1rem $third-Color;
-  transform: translate(-50%, -50%);
+  box-shadow:$shadow-Inset;
   text-align: center;
+  outline: none;
 }
 .switch{
   position: relative;
-  display: inline-block;
-  width: 11rem;
-  height: 6rem;
-  margin: 0 1rem;
+  width: 90%;
+  height: 80%;
+  border-radius: 5rem;
+}
+.switch input{ display: none;}
+.switchTextOn{
+  font-size: $rem15;
+  position: absolute;
+  top: 0.7rem;
+  left: 3.8rem;
+}
+.switchTextOff{
+  font-size: $rem15;
+  position: absolute;
+  top: 0.7rem;
+  left: .8rem;
 }
 .slider{
   position: absolute;
@@ -201,17 +196,27 @@ $font-Color: #71767f;
   left: 0;
   right: 0;
   bottom: 0;
-  background: #ccc;
+  background: $primary-Color;
   transition: .4s;
   border-radius: 3.4rem;
 }
-
-.button-Off-ON:active{
-  border: 0.4rem solid transparent;
-  box-shadow:inset -0.8rem -0.8rem 1.5rem $second-Color,
-  inset 1rem 1rem 1rem $third-Color;
+.slider:before{
+  position: absolute;
+  content: "";
+  height: 2.5rem;
+  width: 2.5rem;
+  left: 0.5rem;
+  bottom: 0.4rem;
+  background-color: #fff;
+  transition: 0.4s;
+  border-radius: 5rem;
+  background: $font-Color;
 }
 
+input:checked + .slider:before{
+  transform: translateX(2.8rem);
+  background: $font-Color;
+}
 .size{
   font-size: 4rem;
   font-weight: bold;
@@ -221,10 +226,8 @@ $font-Color: #71767f;
 .newTimeNum3{
   margin: 0.2rem 0;
   padding: 0.2rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.5rem;
+  @include flexCenter();
+  font-size: $rem15;
   color: $font-Color;
   height: 1.5rem;
 }

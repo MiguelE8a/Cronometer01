@@ -23,9 +23,9 @@
   width: 32rem;
   height: 53rem;
   display: flex;
-  flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  flex-direction: column;
   padding: 2rem 0;
   border-radius: 4rem;
   box-shadow: -0.8rem -0.8rem 1.5rem rgba(255, 255, 255, 0.5), 1rem 1rem 1rem rgba(0, 0, 0, 0.1);
@@ -33,9 +33,9 @@
 .wraper .main .container .container-CurrentDate {
   display: flex;
   justify-content: space-around;
+  align-items: center;
   width: 27rem;
   height: 7rem;
-  align-items: center;
   border-radius: 4rem;
   padding: 0 0.4rem;
   border: 0.4rem solid transparent;
@@ -69,16 +69,15 @@
 .wraper .main .container .container-buttons {
   width: 80%;
   display: flex;
-  align-items: center;
   justify-content: space-around;
+  align-items: center;
 }
 .wraper .main .container .container-buttons .buttons {
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   width: 6rem;
   height: 4rem;
-  font-size: 2rem;
   color: #71767f;
   border-radius: 100%;
   border: none;
@@ -155,26 +154,42 @@
 
 .button-Off-ON {
   display: flex;
-  align-items: center;
   justify-content: center;
-  width: 6rem;
+  align-items: center;
+  width: 7rem;
   height: 4rem;
-  font-size: 2rem;
   color: #71767f;
-  border-radius: 100%;
+  border-radius: 5rem;
   border: none;
   background: #d2d9e4;
-  box-shadow: -0.8rem -0.8rem 1.5rem rgba(255, 255, 255, 0.5), 1rem 1rem 1rem rgba(0, 0, 0, 0.1);
-  transform: translate(-50%, -50%);
+  box-shadow: inset -0.8rem -0.8rem 1.5rem rgba(255, 255, 255, 0.5), inset 1rem 1rem 1rem rgba(0, 0, 0, 0.1);
   text-align: center;
+  outline: none;
 }
 
 .switch {
   position: relative;
-  display: inline-block;
-  width: 11rem;
-  height: 6rem;
-  margin: 0 1rem;
+  width: 90%;
+  height: 80%;
+  border-radius: 5rem;
+}
+
+.switch input {
+  display: none;
+}
+
+.switchTextOn {
+  font-size: 1.5rem;
+  position: absolute;
+  top: 0.7rem;
+  left: 3.8rem;
+}
+
+.switchTextOff {
+  font-size: 1.5rem;
+  position: absolute;
+  top: 0.7rem;
+  left: 0.8rem;
 }
 
 .slider {
@@ -184,14 +199,27 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: #ccc;
+  background: #d2d9e4;
   transition: 0.4s;
   border-radius: 3.4rem;
 }
 
-.button-Off-ON:active {
-  border: 0.4rem solid transparent;
-  box-shadow: inset -0.8rem -0.8rem 1.5rem rgba(255, 255, 255, 0.5), inset 1rem 1rem 1rem rgba(0, 0, 0, 0.1);
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 2.5rem;
+  width: 2.5rem;
+  left: 0.5rem;
+  bottom: 0.4rem;
+  background-color: #fff;
+  transition: 0.4s;
+  border-radius: 5rem;
+  background: #71767f;
+}
+
+input:checked + .slider:before {
+  transform: translateX(2.8rem);
+  background: #71767f;
 }
 
 .size {
