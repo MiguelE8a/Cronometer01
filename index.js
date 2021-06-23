@@ -81,7 +81,12 @@ function onOff(){
      containTimeBreak.innerHTML = ""
      x = true
   }
-
+  clearInterval(intervalSeg)
+  clearInterval(intervalMilSeg)
+  clearInterval(intervalMinutes)
+  clearInterval(intervalHours)
+  playButton.value = 'Play'
+  iconPlay.src = "./images/play.svg"
 }
 
 
@@ -188,67 +193,64 @@ function cleaner(){
 let fragment = document.createDocumentFragment()
 function breakPonint(){
   if(!x){
-  number ++
-  let element = document.createElement('div')
-  element.textContent = number
-  element.classList = 'newTimeNum'
-  fragment = element
-  content_newTimeNum.appendChild(fragment)
+    number ++
+    let element = document.createElement('div')
+    element.textContent = number
+    element.classList = 'newTimeNum'
+    fragment = element
+    content_newTimeNum.appendChild(fragment)
 
-  let time = document.createDocumentFragment()
-  let timeElement = document.createElement('p')
-  timeElement.classList = 'newTimeNum2'
+    let time = document.createDocumentFragment()
+    let timeElement = document.createElement('p')
+    timeElement.classList = 'newTimeNum2'
 
-  let timeBreak = document.createDocumentFragment()
-  let timeElementBreak = document.createElement('p')
-  timeElementBreak.classList = 'newTimeNum3'
+    let timeBreak = document.createDocumentFragment()
+    let timeElementBreak = document.createElement('p')
+    timeElementBreak.classList = 'newTimeNum3'
 
-  let timeClass = new Date()
-  let currentHours = timeClass.getHours(),
-  currentMinutes = timeClass.getMinutes(),
-  currentSeconds = timeClass.getSeconds();
+    let timeClass = new Date()
+    let currentHours = timeClass.getHours(),
+    currentMinutes = timeClass.getMinutes(),
+    currentSeconds = timeClass.getSeconds();
 
-  if(currentHours >= 12){
-    currentHours -=12
+    if(currentHours >= 12){
+      currentHours -=12
+    }
+    if(am_pm.textContent == 'AM'){
+      currentHours +=12
+    }
+    if(currentHours < 10){
+      currentHours = `0${currentHours}`}
+    if(currentSeconds < 10){
+      currentSeconds = `0${currentSeconds}`}
+    if(currentMinutes < 10 ){
+      currentMinutes = `0${currentMinutes}`}
+
+      timeElementBreak.textContent += `${currentHours}:${currentMinutes}:${currentSeconds}`;
+      timeBreak = timeElementBreak;
+      containTimeBreak.appendChild(timeBreak)
+      console.log(timeBreak)
+
+      // if(milSeg < 10){ milSeg = `0${milSeg}`}
+      // if(seg < 10){ seg = `0${seg}` }
+      // if(min < 10){ min = `0${min}` }
+      // if(hours < 10){ hours = `0${hours}`}
+      // timeElement.textContent = `${hours}:${min}:${seg}:${milSeg}`
+      // time = timeElement
+      // newTime.appendChild(time)
+
+    if( milSeg == 0 && seg == 0 && min == 0 && hours == 0){
+      timeElement.textContent = `${hours}:0${min}:0${seg}:0${milSeg}`
+      time = timeElement
+      newTime.appendChild(time)
+    }else{
+      // if(milSeg < 10){ milSeg = `0${milSeg}`}
+      // if(seg < 10){ seg = `0${seg}` }
+      // if(min < 10){ min = `0${min}` }
+      // if(hours < 10){ hours = `0${hours}`}
+      timeElement.textContent = `${hours}:${min}:${seg}:${milSeg}`
+      time = timeElement
+      newTime.appendChild(time)
+    }
   }
-  if(am_pm.textContent == 'AM'){
-    currentHours +=12
-  }
-  if(currentHours < 10){
-    currentHours = `0${currentHours}`}
-  if(currentSeconds < 10){
-    currentSeconds = `0${currentSeconds}`}
-  if(currentMinutes < 10 ){
-    currentMinutes = `0${currentMinutes}`}
-
-    timeElementBreak.textContent += `${currentHours}:${currentMinutes}:${currentSeconds}`;
-    timeBreak = timeElementBreak;
-    containTimeBreak.appendChild(timeBreak)
-    console.log(timeBreak)
-
-    // if(milSeg < 10){ milSeg = `0${milSeg}`}
-    // if(seg < 10){ seg = `0${seg}` }
-    // if(min < 10){ min = `0${min}` }
-    // if(hours < 10){ hours = `0${hours}`}
-    // timeElement.textContent = `${hours}:${min}:${seg}:${milSeg}`
-    // time = timeElement
-    // newTime.appendChild(time)
-
-  if( milSeg == 0 && seg == 0 && min == 0 && hours == 0){
-    timeElement.textContent = `${hours}:0${min}:0${seg}:0${milSeg}`
-    time = timeElement
-    newTime.appendChild(time)
-  }else{
-    // if(milSeg < 10){ milSeg = `0${milSeg}`}
-    // if(seg < 10){ seg = `0${seg}` }
-    // if(min < 10){ min = `0${min}` }
-    // if(hours < 10){ hours = `0${hours}`}
-    timeElement.textContent = `${hours}:${min}:${seg}:${milSeg}`
-    time = timeElement
-    newTime.appendChild(time)
-  }
-
-
-
-  }console.log(fragment)
 }
